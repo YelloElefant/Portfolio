@@ -1,8 +1,20 @@
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
 html {
    background-color: #040404;
    color: white;
    font-family: "Anonymous Pro", monospace;
+   font-size: 16px;
+   line-height: 1.5;
+   margin: 0;
+   padding: 0;
 
+   width: 100%;
+   height: 100%;
 }
 
 
@@ -103,4 +115,32 @@ hr {
    font-family: "Anonymous Pro", monospace;
    font-weight: 700;
    font-style: italic;
+}
+
+/* adding nav bar */
+nav {
+   background-color: #1e1e1e;
+   padding: 10px;
+   margin-bottom: 20px;
+   display: flex;
+
+}
+
+#title {
+   font-size: 2rem;
+   margin: 0;
+   /* display: block; */
+}
+
+#navigation {
+   display: flex;
+   justify-content: left;
+   align-items: center;
+   width: 100%;
+}
+
+#navigation a {
+   margin: 0 50px;
+   font-size: 18px;
+   font-weight: 700;
 }
