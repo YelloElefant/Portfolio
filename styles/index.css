@@ -51,9 +51,7 @@ a {
    text-decoration: none;
 }
 
-a:hover {
-   text-decoration: underline;
-}
+
 
 pre {
    background-color: #1e1e1e;
@@ -119,11 +117,11 @@ hr {
 
 /* adding nav bar */
 nav {
-   background-color: #1e1e1e;
+   background-color: #3636367a;
    padding: 10px;
    margin-bottom: 20px;
    display: flex;
-
+   border-bottom: #21262d solid thin;
 }
 
 #title {
@@ -137,10 +135,21 @@ nav {
    justify-content: left;
    align-items: center;
    width: 100%;
+   margin-left: 20px;
 }
 
-#navigation a {
-   margin: 0 50px;
+.navigationItem {
+   margin: 0 50px 2px 50px;
    font-size: 18px;
    font-weight: 700;
+   transition: color 0.75s ease, border-bottom 1s ease;
+   border: transparent solid 2px;
+   /* padding: 2px; */
+}
+
+.navigationItem:hover {
+   border-bottom: #00d4ff solid 2px;
+
+   color: #ffffff;
+
 }
