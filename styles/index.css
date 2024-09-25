@@ -3,7 +3,82 @@ html {
    color: white;
    font-family: "Anonymous Pro", monospace;
 
+}
 
+
+h1 {
+   font-size: 2.5rem;
+}
+
+h2 {
+   font-size: 2rem;
+}
+
+h3 {
+   font-size: 1.75rem;
+}
+
+h4 {
+   font-size: 1.5rem;
+}
+
+h5 {
+   font-size: 1.25rem;
+}
+
+h6 {
+   font-size: 1rem;
+}
+
+p {
+   font-size: 1rem;
+}
+
+a {
+   color: #00d4ff;
+   text-decoration: none;
+}
+
+a:hover {
+   text-decoration: underline;
+}
+
+pre {
+   background-color: #1e1e1e;
+   border-radius: 5px;
+   padding: 10px;
+   overflow-x: auto;
+}
+
+code {
+   color: white;
+}
+
+blockquote {
+   color: white;
+   border-left: 5px solid #00d4ff;
+   padding-left: 10px;
+   margin-left: 0;
+}
+
+ul {
+   list-style: none;
+   padding-left: 0;
+}
+
+li {
+   padding: 5px;
+}
+
+img {
+   max-width: 100%;
+   height: auto;
+}
+
+hr {
+   border: 0;
+   border-top: 1px solid #00d4ff;
+   margin: 20px 0;
 }
 
 .anonymous-pro-regular {
