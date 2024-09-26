@@ -1,18 +1,10 @@
 let titleEle = document.getElementById("title");
 let main = document.getElementById("main");
-let nav = document.getElementById("nav");
-let locationWrapper = document.getElementById("location");
-let html = document.getElementsByTagName("html")
 let titleNav = document.getElementById("titleNavWrapper")
 
-// titleNav.style.height = html.style.height;
-
 main.style.opacity = 0;
-// nav.style.opacity = 0;
 
-
-
-// titleEle.style.transform = "translateX(-50%) translateY(-50%) scale(2, 2)"
+changeOp(0)
 
 setTimeout(() => {
     titleEle.classList.add("top")
@@ -25,11 +17,9 @@ setTimeout(() => {
         titleNav.style.borderBottom = "#21262d solid thin"
 
         titleEle.style.position = "static"
+        main.style.opacity = 1;
 
-        for (let i = 1; i < titleNav.children.length; i++) {
-            const element = titleNav.children[i];
-            element.style.opacity = 1;
-        }
+        changeOp(1)
 
 
     }, 800);
@@ -37,3 +27,10 @@ setTimeout(() => {
 
 
 }, 2000)
+
+function changeOp(x) {
+    for (let i = 1; i < titleNav.children.length; i++) {
+        const element = titleNav.children[i];
+        element.style.opacity = x;
+    }
+}

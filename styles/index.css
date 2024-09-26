@@ -18,6 +18,7 @@
    padding: 0;
    box-sizing: border-box;
    font-family: var(--main-font);
+   color: white;
 }
 
 html {
@@ -204,7 +205,7 @@ hr {
 
 }
 
-#location {
+#locationWrapper {
    opacity: 0;
    transition: 1s ease;
    flex: 1;
