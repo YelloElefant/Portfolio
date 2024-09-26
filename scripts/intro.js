@@ -1,6 +1,7 @@
 let titleEle = document.getElementById("title");
 let main = document.getElementById("main");
 let nav = document.getElementById("nav");
+let locationWrapper = document.getElementById("location");
 let html = document.getElementsByTagName("html")
 let titleNav = document.getElementById("titleNavWrapper")
 
@@ -20,15 +21,19 @@ setTimeout(() => {
 
     /* position: static; */
     setTimeout(() => {
+        titleNav.style.backgroundColor = "#3636367a";
+        titleNav.style.borderBottom = "#21262d solid thin"
+
         titleEle.style.position = "static"
-        nav.style.opacity = 1;
-        main.style.opacity = 1;
+
+        for (let i = 1; i < titleNav.children.length; i++) {
+            const element = titleNav.children[i];
+            element.style.opacity = 1;
+        }
+
 
     }, 800);
 
 
 
 }, 2000)
-
-
-

@@ -154,8 +154,8 @@ hr {
 }
 
 #titleNavWrapper {
-   border-bottom: #21262d solid thin;
-   background-color: #3636367a;
+   /* border-bottom: #21262d solid thin; */
+   /* background-color: #3636367a; */
    display: flex;
    justify-content: flex-start;
    align-items: center;
@@ -202,6 +202,13 @@ hr {
 
    display: flex;
 
+}
+
+#location {
+   opacity: 0;
+   transition: 1s ease;
+   flex: 1;
+   text-align: right;
 }
 
 
