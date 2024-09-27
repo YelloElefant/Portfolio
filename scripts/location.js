@@ -1,5 +1,6 @@
 let locationWrapper = document.getElementById("locationWrapper");
-let locationEle = document.getElementById("location");
+let long = document.getElementById("long");
+let lat = document.getElementById("lat");
 
 async function fetchMyIp() {
     const response = await fetch("https://api.ipify.org?format=json");
@@ -19,7 +20,8 @@ async function getLocation() {
 
 
 
-    locationEle.innerHTML = clientLocation.country + " , " + clientLocation.regionName + " , " + clientLocation.city
+    long.innerHTML = clientLocation.lon;
+    lat.innerHTML = clientLocation.lat;
 }
 getLocation();
 
