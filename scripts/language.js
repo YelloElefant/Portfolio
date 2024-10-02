@@ -14,12 +14,26 @@ const colors = ["#f06529", " #2965f1", "#f7df1e", "white", "#f89820", "green", "
 
 let i = 0;
 languages.forEach(element => {
-    let inner = element.children[0];
-    inner.style.color = colors[i];
+    let eleColor = colors[i];
+    let inner = element.children[1];
+    let topLine = element.children[0]
+    let bottomLine = element.children[2]
+
     if(inner.className == "html") {
-        i++
-        element.children[1].style.color = colors[i];
+        console.log(inner)
+        inner.children[0].style.color = eleColor;
+        i++;
+        inner.children[1].style.color = colors[i];
+        bottomLine.style.backgroundColor = colors[i];
+    } else {
+        inner.style.color = eleColor;
+        bottomLine.style.backgroundColor = eleColor;
     }
+    topLine.style.backgroundColor = eleColor;
+
+
+
+    
 
     element.addEventListener("click", ()=>{
         if (previouseClicked != null) {
@@ -31,8 +45,8 @@ languages.forEach(element => {
         let eleColor = element.style.color;
         console.log(eleColor);
 
-        inner.style.borderTop = "solid thin " + eleColor;
-        inner.style.borderBottom = "solid thin " + eleColor;
+        // inner.style.borderTop = "solid thin " + eleColor;
+        // inner.style.borderBottom = "solid thin " + eleColor;
 
 
 

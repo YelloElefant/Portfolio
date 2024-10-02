@@ -294,7 +294,8 @@ hr {
    padding: 15px;
    text-align: center;
    font-weight: 700;
-
+   display: flex;
+   flex-direction: column;
 }
 
 .languageName:last-child {
@@ -304,6 +305,29 @@ hr {
 .languageName:hover {
    /* border: var(--border-color) solid thin; */
    cursor: pointer;
+}
+
+.languageName * {
+   padding: 5px;
+   transition: 0.5s ease;
+
+}
+
+.underline {
+   display: inline-block;
+   height: 2px;
+   width: 0;
+   transition: width .25s linear;
+   color: transparent;
+   line-height: 1px;
+   padding: 0;
+}
+
+*:hover > .underline {
+   width: 100%;
+   background-color: white;
+
+
 }
 
 /* .clickedName {
