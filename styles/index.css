@@ -265,3 +265,47 @@ hr {
       border-color: var(--secondary-font-color);
    }
 }
+
+
+#languages {
+   margin: 0 15px;
+   border: var(--border-color) solid thin;
+   border-radius: 5px;
+   display: flex;
+   flex-direction: row;
+}
+
+#languageNames {
+   /* border: var(--border-color) solid thin; */
+}
+
+
+
+
+#languageDescriptions {
+   border-left: var(--border-color) solid thin;
+   flex: 1;
+   padding: 15px;
+
+}
+
+.languageName {
+   border-bottom: var(--border-color) solid thin;
+   padding: 15px;
+   text-align: center;
+   font-weight: 700;
+
+}
+
+.languageName:last-child {
+   border: none;
+}
+
+.languageName:hover {
+   /* border: var(--border-color) solid thin; */
+   cursor: pointer;
+}
+
+/* .clickedName {
+   border-bottom: solid white 2px;
+} */
