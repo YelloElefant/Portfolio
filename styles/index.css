@@ -287,9 +287,9 @@ hr {
 
 
 #languageDescriptions {
-   border-left: var(--border-color) solid thin;
-   flex: 1;
+   border: var(--border-color) solid thin;
    padding: 15px;
+   width: 100%;
 
 }
 

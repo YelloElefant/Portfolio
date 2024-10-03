@@ -5,7 +5,6 @@ let TxtType = function (el, toRotate, period, shouldRemove) {
    this.period = parseInt(period, 10) || 2000;
    this.txt = '';
    this.shouldRemove = shouldRemove;
-   console.log(shouldRemove == false)
    this.tick();
    this.isDeleting = false;
 };
@@ -39,7 +38,6 @@ TxtType.prototype.tick = function () {
    }
 
 
-   console.log(this.txt == fullTxt)
    
    
    if (this.txt == fullTxt && this.shouldRemove == false) {return;}
@@ -50,18 +48,29 @@ TxtType.prototype.tick = function () {
 };
 
 window.onload = function () {
-   let elements = document.getElementsByClassName('typewrite');
+   // INJECT CSS
+   let css = document.createElement("style");
+   css.type = "text/css";
+   css.innerHTML = ".typewrite > .wrap { border-right: 2px solid var(--secondary-font-color); }";
+   document.body.appendChild(css);
+
+   let elements = document.getElementsByClassName('autoTypeWrite');
    for (let i = 0; i < elements.length; i++) {
-      let toRotate = elements[i].getAttribute('data-type');
-      let period = elements[i].getAttribute('data-period');
-      let shouldRemove = toRotate.length == 1;
-      if (toRotate) {
-         new TxtType(elements[i], JSON.parse(toRotate), period, shouldRemove);
-      }
+      startTypeWriter(elements[i]);
+   }
+};
+
+function startTypeWriter(x) {
+   
+   let toRotate = x.getAttribute('data-type');
+   let period = x.getAttribute('data-period');
+   let shouldRemove = toRotate.length == 1;
+   if (toRotate) {
+      new TxtType(x, JSON.parse(toRotate), period, shouldRemove);
    }
    // INJECT CSS
    let css = document.createElement("style");
    css.type = "text/css";
    css.innerHTML = ".typewrite > .wrap { border-right: 2px solid var(--secondary-font-color); }";
    document.body.appendChild(css);
-};
+}

@@ -5,10 +5,11 @@ let currentEl = null;
 const left = document.querySelector('#rectleft');
 const right = document.querySelector('#rectright');
 
-for (let i = 1; i < descriptions.children.length; i++) {
-    const element = descriptions.children[i];
-    element.style.display = "none";
-}
+// for (let i = 1; i < descriptions.children.length; i++) {
+//     const element = descriptions.children[i];
+//     element.style.display = "none";
+// }
+descriptions.style.display = "none"
 
 console.log(languages);
 const colors = ["#f06529", " #2965f1", "#f7df1e", "white", "#f89820", "green", "#68ff00", "#0092e6", "#8892bf"]
@@ -45,14 +46,14 @@ languages.forEach(element => {
         }
         previouseClicked = inner;
         // inner.classList.add("clickedName")
-        let eleColor = element.style.color;
         currentEl = element;
+        descriptions.style.display = "block";
+        descriptions.style.borderColor = eleColor;
+        let descpt = descriptions.children[0]
+        startTypeWriter(descpt);
+        
 
-        // inner.style.borderTop = "solid thin " + eleColor;
-        // inner.style.borderBottom = "solid thin " + eleColor;
-
-        setUpPath();
-        doPath("green")
+        
 
     });
     i++;
