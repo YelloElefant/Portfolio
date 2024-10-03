@@ -291,11 +291,13 @@ hr {
    border-right: var(--border-color) solid thin;
    margin: 15px;
    width: 100%;
+   transition: 0.25 ease;
 
 }
 
 .languageName {
    border-bottom: var(--border-color) solid thin;
+   
    padding: 15px;
    text-align: center;
    font-weight: 700;

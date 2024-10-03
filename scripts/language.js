@@ -48,7 +48,7 @@ languages.forEach(element => {
         // inner.classList.add("clickedName")
         currentEl = element;
         descriptions.style.display = "block";
-        descriptions.style.borderColor = eleColor;
+        descriptions.style.borderLeftColor = eleColor;
         let descpt = descriptions.children[1]
         descpt.innerHTML = '';
         makeDescriptionOutline(eleColor)
@@ -66,7 +66,10 @@ function makeDescriptionOutline(color) {
     let lines = descriptions.querySelectorAll(".descLine");
     lines.forEach((line) => {
         line.style.backgroundColor = color
-        line.style.width = "100%"
+        setTimeout(()=>{
+            line.style.width = "100%"
+            descriptions.style.borderRightColor = color;
+        }, 100)
 
     })
 }
