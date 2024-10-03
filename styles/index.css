@@ -272,11 +272,15 @@ hr {
    border: var(--border-color) solid thin;
    border-radius: 5px;
    display: flex;
-   flex-direction: row;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
 }
 
 #languageNames {
    /* border: var(--border-color) solid thin; */
+   display: flex;
+   flex-direction: row;
 }
 
 
@@ -296,6 +300,9 @@ hr {
    font-weight: 700;
    display: flex;
    flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   font-size: large  ;
 }
 
 .languageName:last-child {
@@ -317,7 +324,7 @@ hr {
    display: inline-block;
    height: 2px;
    width: 0;
-   transition: width .25s linear;
+   transition: width .25s ease-in-out;
    color: transparent;
    line-height: 1px;
    padding: 0;
