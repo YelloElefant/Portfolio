@@ -287,8 +287,9 @@ hr {
 
 
 #languageDescriptions {
-   border: var(--border-color) solid thin;
-   padding: 15px;
+   border-left: var(--border-color) solid thin;
+   border-right: var(--border-color) solid thin;
+   margin: 15px;
    width: 100%;
 
 }
@@ -340,3 +341,23 @@ hr {
 /* .clickedName {
    border-bottom: solid white 2px;
 } */
+
+#languageDescriptions .typeWrite {
+   margin: 0 15px ;
+}
+
+.descLine {
+   width: 0;
+   height: 1px;
+   transition: width .25s ease-in-out;
+   color: transparent;
+   line-height: 1px;
+}
+
+.descLine:first-child {
+   margin-bottom: 15px;
+}
+
+.descLine:last-child {
+   margin-top: 15px;
+}

@@ -49,7 +49,9 @@ languages.forEach(element => {
         currentEl = element;
         descriptions.style.display = "block";
         descriptions.style.borderColor = eleColor;
-        let descpt = descriptions.children[0]
+        let descpt = descriptions.children[1]
+        descpt.innerHTML = '';
+        makeDescriptionOutline(eleColor)
         startTypeWriter(descpt);
         
 
@@ -60,43 +62,11 @@ languages.forEach(element => {
 })
 
 
-function setUpPath() {
-	let x = (currentEl.offsetLeft + currentEl.clientWidth / 2);
+function makeDescriptionOutline(color) {
+    let lines = descriptions.querySelectorAll(".descLine");
+    lines.forEach((line) => {
+        line.style.backgroundColor = color
+        line.style.width = "100%"
 
-	x -= 20;
-	let h = window.innerHeight - left.parentElement.getBoundingClientRect().y - 20;
-	let x2 = window.innerWidth - x - 40;
-
-	// Create svg paths
-	left.setAttribute('d', `M ${x + 2},0
-							C 100,0 40,0 40,0
-							40,0 0,0 0,40
-							0,40 0,60 0,${h - 40}
-							0,${h - 40} 0,${h} 40,${h}
-							93.75,${h} 100,${h} ${x2},${h}`);
-	right.setAttribute('d', `M -2,0
-							 C -2,0 ${x2 - 40},0 ${x2 - 40},0
-							 ${x2 - 40},0 ${x2},0 ${x2},40
-							 ${x2},40 ${x2},60 ${x2},${h - 40}
-							 ${x2},${h - 40} ${x2},${h} ${x2 - 40},${h}
-							 ${x2 - x + 40},${h} ${x2 - x},${h} ${x2 - x},${h}`);
-	right.style.transform = `translateX(${x + 1}px) translateY(1px)`;
-	// Reset everything
-	let len = left.getTotalLength();
-	left.style.transition = 'initial';
-	left.style.strokeDasharray = len;
-	right.style.transition = 'initial';
-	right.style.strokeDasharray = len;
-
-}
-
-function doPath(color) {
-	left.style.stroke = color;
-	right.style.stroke = color;
-
-	// Do animation
-	left.style.transition = 'stroke-dashoffset .75s ease-in-out';
-	right.style.transition = 'stroke-dashoffset .75s ease-in-out';
-	left.style.strokeDashoffset = '0';
-	right.style.strokeDashoffset = '0';
+    })
 }
