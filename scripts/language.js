@@ -44,22 +44,16 @@ languages.forEach(element => {
 
     element.addEventListener("click", async ()=>{
         let index = Array.prototype.indexOf.call(languages, element);
-        let descContent = descriptions.querySelectorAll(".descContent")[0]
-        descContent.innerHTML = '';
-        descContents[index].forEach((ex) => {
-            descContent.appendChild(ex.root)
-        })
+        let descContent = descriptions.querySelectorAll(".descContent")[index]
         let descpts = descContent.querySelectorAll(".typeWrite");
-
-        // descriptions.querySelectorAll(".descContent").forEach((content)=> {
-        //     if (content == descContent) {
-        //         content.style.display = "flex";
-        //         return;
-        //     }
-        //     content.style.display = "none";
-        // })
-
-
+        descpts.forEach((thing) => { thing.innerHTML = ''; })
+        descriptions.querySelectorAll(".descContent").forEach((content)=> {
+            if (content == descContent) {
+                content.style.display = "flex";
+                return;
+            }
+            content.style.display = "none";
+        })
         console.log(index)
         try {
             previouseLines.top.style.width = "";
@@ -163,105 +157,3 @@ function makeDescriptionOutline(color, size) {
 
     })
 }
-
-class Example {
-    constructor(t, i, d) {
-        this.title = document.createElement("div")
-        this.title.className = "instant descTitle";
-        this.title.innerHTML = t;
-        this.img = document.createElement("img")
-        this.img.className = "instant descImage"
-        this.img.src = i;
-        this.desc = document.createElement("div")
-        this.desc.className = "typeWrite";
-
-        this.desc.setAttribute("data-period","0")
-        this.desc.setAttribute("data-type", d)
-        this.desc.setAttribute("data-cursorcolor","green")
-
-        this.root = document.createElement("div")
-        this.root.className = "example";
-
-        this.root.appendChild(this.title)
-        this.root.appendChild(this.img)
-        this.root.appendChild(this.desc)
-
-
-    }
-}
-
-let descContents = [
-    [
-        new Example("this is a html", "./images/sadPengu.jpg", '["this is a description block 1"]'),
-        new Example("this is a css", "./images/sadPengu.jpg", '["this is a description block 1"]'),
-        new Example("this is a html css", "./images/sadPengu.jpg", '["this is a description block 1"]')
-    ],
-    [
-        new Example("this is a javascript", "./images/sadPengu.jpg", '["this is a description block 1"]'),
-        new Example("this is a javascript", "./images/sadPengu.jpg", '["this is a description block 1"]'),
-        new Example("this is a javascript", "./images/sadPengu.jpg", '["this is a description block 1"]')
-    ],
-    [
-        new Example("this is a Linux", "./images/sadPengu.jpg", '["this is a description block 1"]'),
-        new Example("this is a Linux", "./images/sadPengu.jpg", '["this is a description block 1"]'),
-        new Example("this is a Linux", "./images/sadPengu.jpg", '["this is a description block 1"]')
-    ],
-    [
-        new Example("this is a Java", "./images/sadPengu.jpg", '["this is a description block 1"]'),
-        new Example("this is a Java", "./images/sadPengu.jpg", '["this is a description block 1"]'),
-        new Example("this is a Java", "./images/sadPengu.jpg", '["this is a description block 1"]')
-    ],
-    [
-        new Example("this is a C#", "./images/sadPengu.jpg", '["this is a description block 1"]'),
-        new Example("this is a C#", "./images/sadPengu.jpg", '["this is a description block 1"]'),
-        new Example("this is a C#", "./images/sadPengu.jpg", '["this is a description block 1"]')
-    ],
-    [
-        new Example("this is a Shell Scripts", "./images/sadPengu.jpg", '["this is a description block 1"]'),
-        new Example("this is a Shell Scripts", "./images/sadPengu.jpg", '["this is a description block 1"]'),
-        new Example("this is a Shell Scripts", "./images/sadPengu.jpg", '["this is a description block 1"]')
-    ],
-    [
-        new Example("this is a Docker", "./images/sadPengu.jpg", '["this is a description block 1"]'),
-        new Example("this is a Docker", "./images/sadPengu.jpg", '["this is a description block 1"]'),
-        new Example("this is a Docker", "./images/sadPengu.jpg", '["this is a description block 1"]')
-    ],
-    [
-        new Example("this is a PHP", "./images/sadPengu.jpg", '["this is a description block 1"]'),
-        new Example("this is a PHP", "./images/sadPengu.jpg", '["this is a description block 1"]'),
-        new Example("this is a PHP", "./images/sadPengu.jpg", '["this is a description block 1"]')
-    ]
-]
-console.log(descContents)
-
-
-
-{/* <div class="descContent">
-            <div class="example">
-              <div class="instant descTitle">this is a title</div>
-              <div
-              class="typeWrite"
-              data-period="0"
-              data-type='[ "this is a description block 1"]'
-              data-cursorcolor="green"
-              ></div>
-            </div>
-            <div class="example">
-              <div class="instant descTitle">this is a title</div>
-              <div
-              class="typeWrite"
-              data-period="0"
-              data-type='[ "this is a description block 2"]'
-              data-cursorcolor="green"
-              ></div>
-            </div>
-            <div class="example">
-              <div class="instant descTitle">this is a title</div>
-              <div
-              class="typeWrite"
-              data-period="0"
-              data-type='[ "this is a description block 3"]'
-              data-cursorcolor="green"
-              ></div>
-            </div>
-          </div> */}
