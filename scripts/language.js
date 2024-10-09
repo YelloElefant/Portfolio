@@ -15,6 +15,7 @@ console.log(languages);
 const colors = ["#f06529", " #2965f1", "#f7df1e", "white", "#f89820", "green", "#68ff00", "#0092e6", "#8892bf"]
 
 let listOfTypeWriters = [];
+let previouseLines;
 
 // html  #e34c26, css #264de4 
 
@@ -43,16 +44,22 @@ languages.forEach(element => {
 
     element.addEventListener("click", async ()=>{
         let descpts = descriptions.querySelectorAll(".typeWrite");
+        try {
+            previouseLines.top.style.width = "";
+            previouseLines.bottom.style.width = "";
+        }catch{}
 
         if (element.getAttribute('data-clicked')) {
-
             element.removeAttribute('data-clicked')
             interupt();
             undoCoolThing("transperant", 0)
             resetDescriptions(descpts)
 
             return
-        }
+        } 
+        bottomLine.style.width = "100%"
+        topLine.style.width = "100%"
+
         languages.forEach(e => {e.removeAttribute('data-clicked')})
         element.setAttribute('data-clicked', "true")
         let typeWriterPromise;
@@ -64,6 +71,11 @@ languages.forEach(element => {
             timeout = 500;
         }
         previouseClicked = inner;
+        previouseLines = {
+            top: topLine,
+            bottom: bottomLine
+        }
+
         // inner.classList.add("clickedName")
 
         setTimeout(async ()=>{
