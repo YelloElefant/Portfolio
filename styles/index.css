@@ -293,7 +293,7 @@ hr {
    border-right: var(--border-color) solid thin;
    margin: 15px;
    width: 100%;
-   transition: 0.25 ease;
+   transition: 0.25s ease;
 
 }
 
@@ -352,7 +352,7 @@ hr {
 
 .descTitle {
    font-weight: bold;
-   
+
 }
  
 

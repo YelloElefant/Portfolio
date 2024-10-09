@@ -72,7 +72,7 @@ function startTypeWriter(x, callBack) {
    let period = x.getAttribute('data-period');
    let shouldRemove = toRotate.length == 1;
    let txtType;
-   let speedMultiplyer = x.getAttribute('data-speed') == null ? 7 : x.getAttribute('data-speed');
+   let speedMultiplyer = x.getAttribute('data-speed') == null ? 10 : x.getAttribute('data-speed');
    if (toRotate) {
       txtType = new TxtType(x, JSON.parse(toRotate), period, shouldRemove, callBack, speedMultiplyer);
    }

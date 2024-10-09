@@ -42,31 +42,64 @@ languages.forEach(element => {
     
 
     element.addEventListener("click", async ()=>{
+        let descpts = descriptions.querySelectorAll(".typeWrite");
+
+        if (element.getAttribute('data-clicked')) {
+
+            element.removeAttribute('data-clicked')
+            interupt();
+            undoCoolThing("transperant", 0)
+            resetDescriptions(descpts)
+
+            return
+        }
+        languages.forEach(e => {e.removeAttribute('data-clicked')})
+        element.setAttribute('data-clicked', "true")
         let typeWriterPromise;
         let timeout = 0
+
         if (previouseClicked != null) {
             interupt();
-            previouseClicked.style.borderBottom = "none";
-            previouseClicked.style.borderTop = "none";
             makeDescriptionOutline("transperant", 0)
             timeout = 500;
         }
         previouseClicked = inner;
         // inner.classList.add("clickedName")
-        setTimeout(()=>{
-            currentEl = element;
-            descriptions.style.display = "block";
-            descriptions.style.borderLeftColor = eleColor;
-            let descpts = descriptions.querySelectorAll(".typeWrite");
-            descpts.forEach((descpt) => {
-                descpt.innerHTML = '';
-            })
-            makeDescriptionOutline(eleColor, 100);
+
+        setTimeout(async ()=>{
+            await doCoolThing(eleColor, 100);
+            resetDescriptions(descpts)
             typeWriterPromise = makeTypeWriters(descpts).then(console.log);
         },timeout)
     });
     i++;
 })
+
+function resetDescriptions(descpts) {
+    descpts.forEach((descpt) => {
+        descpt.innerHTML = '';
+    })
+}
+
+function doCoolThing(color, size) {
+    descriptions.style.display = "block";
+    descriptions.style.borderLeftColor = color;
+    makeDescriptionOutline(color, size)
+    return new Promise(r => setTimeout(r, 100));
+}
+
+async function undoCoolThing(color, size) {
+    descriptions.style.borderLeftColor = color;
+    makeDescriptionOutline(color, size)
+    await new Promise(r => setTimeout(r, 500));
+    descriptions.style.opacity = 0;
+    await new Promise(r => setTimeout(r, 100));
+    descriptions.style.opacity = 1;
+    descriptions.style.display = "none";
+            
+}
+
+
 
 async function makeTypeWriters(x) {
     return new Promise(async (resolve) =>{
