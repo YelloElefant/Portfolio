@@ -271,7 +271,6 @@ hr {
 
 #languages {
    margin: 0 15px;
-   border: var(--border-color) solid thin;
    border-radius: 5px;
    display: flex;
    flex-direction: column;
@@ -280,7 +279,6 @@ hr {
 }
 
 #languageNames {
-   /* border: var(--border-color) solid thin; */
    display: flex;
    flex-direction: row;
 }
@@ -298,8 +296,6 @@ hr {
 }
 
 .languageName {
-   border-bottom: var(--border-color) solid thin;
-   
    padding: 15px;
    text-align: center;
    font-weight: 700;
@@ -372,4 +368,8 @@ hr {
 
 .descLine:last-child {
    margin-top: 15px;
+}
+
+.typewrite > .wrap { 
+   border-right: 2px solid var(--secondary-font-color); 
 }

@@ -54,12 +54,6 @@ TxtType.prototype.tick = function () {
 };
 
 window.onload = function () {
-   // INJECT CSS
-   let css = document.createElement("style");
-   css.type = "text/css";
-   css.innerHTML = ".typewrite > .wrap { border-right: 2px solid var(--secondary-font-color); }";
-   document.body.appendChild(css);
-
    let elements = document.getElementsByClassName('autoTypeWrite');
    for (let i = 0; i < elements.length; i++) {
       startTypeWriter(elements[i]);
@@ -76,11 +70,6 @@ function startTypeWriter(x, callBack) {
    if (toRotate) {
       txtType = new TxtType(x, JSON.parse(toRotate), period, shouldRemove, callBack, speedMultiplyer);
    }
-   // INJECT CSS
-   let css = document.createElement("style");
-   css.type = "text/css";
-   css.innerHTML = ".typewrite > .wrap { border-right: 2px solid var(--secondary-font-color); }";
-   document.body.appendChild(css);
    return txtType
 }
 
