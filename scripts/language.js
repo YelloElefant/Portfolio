@@ -76,10 +76,9 @@ languages.forEach(element => {
             bottom: bottomLine
         }
 
-        // inner.classList.add("clickedName")
-
         setTimeout(async ()=>{
             await doCoolThing(eleColor, 100);
+            if (inner.className == "html") { makeDescriptionOutline(colors[1], 100); }
             resetDescriptions(descpts)
             typeWriterPromise = makeTypeWriters(descpts).then(console.log);
         },timeout)
