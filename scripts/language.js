@@ -43,7 +43,17 @@ languages.forEach(element => {
     
 
     element.addEventListener("click", async ()=>{
-        let descpts = descriptions.querySelectorAll(".typeWrite");
+        let index = Array.prototype.indexOf.call(languages, element);
+        let descContent = descriptions.querySelectorAll(".descContent")[index]
+        let descpts = descContent.querySelectorAll(".typeWrite");
+        descriptions.querySelectorAll(".descContent").forEach((content)=> {
+            if (content == descContent) {
+                content.style.display = "flex";
+                return;
+            }
+            content.style.display = "none";
+        })
+        console.log(index)
         try {
             previouseLines.top.style.width = "";
             previouseLines.bottom.style.width = "";
@@ -80,7 +90,7 @@ languages.forEach(element => {
             await doCoolThing(eleColor, 100);
             if (inner.className == "html") { makeDescriptionOutline(colors[1], 100); }
             resetDescriptions(descpts)
-            typeWriterPromise = makeTypeWriters(descpts).then(console.log);
+            typeWriterPromise = makeTypeWriters(descpts);
         },timeout)
     });
     i++;
@@ -124,9 +134,7 @@ async function makeTypeWriters(x) {
             }   
             )
             await new Promise(r => setTimeout(r, 100));
-            console.log(written)
         }
-        resolve("all done")
     })
 }
 
