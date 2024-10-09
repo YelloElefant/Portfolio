@@ -346,9 +346,17 @@ hr {
    border-bottom: solid white 2px;
 } */
 
-#languageDescriptions .typeWrite {
+#languageDescriptions .typeWrite, #languageDescriptions .instant {
    margin: 0 15px ;
 }
+
+.descTitle {
+   font-weight: bold;
+   
+}
+ 
+
+
 
 .descLine {
    width: 0;

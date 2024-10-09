@@ -1,4 +1,4 @@
-let TxtType = function (el, toRotate, period, shouldRemove) {
+let TxtType = function (el, toRotate, period, shouldRemove, callBack, speedMultiplyer) {
    this.toRotate = toRotate;
    this.el = el;
    this.loopNum = 0;
@@ -8,7 +8,8 @@ let TxtType = function (el, toRotate, period, shouldRemove) {
    this.tick();
    this.isDeleting = false;
    this.exit = false;
-   this.isDone = false; 
+   this.done = callBack;
+   this.speedMultiplyer = speedMultiplyer;
 };
 
 TxtType.prototype.tick = function () {
@@ -26,8 +27,7 @@ TxtType.prototype.tick = function () {
    this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
 
    let that = this;
-   let delta = 200 - Math.random() * 100;
-
+   let delta = (200 - Math.random() * 100) / this.speedMultiplyer;
    if (this.isDeleting) { delta /= 2; }
 
    if (!this.isDeleting && this.txt === fullTxt) {
@@ -44,7 +44,7 @@ TxtType.prototype.tick = function () {
    
    
    if (this.txt == fullTxt && this.shouldRemove == false) {
-      this.isDone = true;
+      this.done()
       return;
    }
 
@@ -66,14 +66,15 @@ window.onload = function () {
    }
 };
 
-function startTypeWriter(x) {
+function startTypeWriter(x, callBack) {
    
    let toRotate = x.getAttribute('data-type');
    let period = x.getAttribute('data-period');
    let shouldRemove = toRotate.length == 1;
    let txtType;
+   let speedMultiplyer = x.getAttribute('data-speed') == null ? 7 : x.getAttribute('data-speed');
    if (toRotate) {
-      txtType = new TxtType(x, JSON.parse(toRotate), period, shouldRemove);
+      txtType = new TxtType(x, JSON.parse(toRotate), period, shouldRemove, callBack, speedMultiplyer);
    }
    // INJECT CSS
    let css = document.createElement("style");

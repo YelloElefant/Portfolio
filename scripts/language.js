@@ -41,7 +41,8 @@ languages.forEach(element => {
 
     
 
-    element.addEventListener("click", ()=>{
+    element.addEventListener("click", async ()=>{
+        let typeWriterPromise;
         let timeout = 0
         if (previouseClicked != null) {
             interupt();
@@ -61,16 +62,27 @@ languages.forEach(element => {
                 descpt.innerHTML = '';
             })
             makeDescriptionOutline(eleColor, 100);
-            makeTypeWriters(descpts);
-
+            typeWriterPromise = makeTypeWriters(descpts).then(console.log);
         },timeout)
     });
     i++;
 })
 
-function makeTypeWriters(x) {
-    x.forEach((y)=>{
-        listOfTypeWriters.push(startTypeWriter(y))
+async function makeTypeWriters(x) {
+    return new Promise(async (resolve) =>{
+        for (let i = 0; i < x.length; i++) {
+            const y = x[i];
+            let written = await new Promise((resolve) => {
+                let current = startTypeWriter(y, () => {
+                    resolve("done")
+                })
+                listOfTypeWriters.push(current)
+            }   
+            )
+            await new Promise(r => setTimeout(r, 100));
+            console.log(written)
+        }
+        resolve("all done")
     })
 }
 
