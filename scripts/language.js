@@ -14,6 +14,8 @@ descriptions.style.display = "none"
 console.log(languages);
 const colors = ["#f06529", " #2965f1", "#f7df1e", "white", "#f89820", "green", "#68ff00", "#0092e6", "#8892bf"]
 
+let listOfTypeWriters = [];
+
 // html  #e34c26, css #264de4 
 
 let i = 0;
@@ -40,34 +42,51 @@ languages.forEach(element => {
     
 
     element.addEventListener("click", ()=>{
+        let timeout = 0
         if (previouseClicked != null) {
+            interupt();
             previouseClicked.style.borderBottom = "none";
             previouseClicked.style.borderTop = "none";
+            makeDescriptionOutline("transperant", 0)
+            timeout = 500;
         }
         previouseClicked = inner;
         // inner.classList.add("clickedName")
-        currentEl = element;
-        descriptions.style.display = "block";
-        descriptions.style.borderLeftColor = eleColor;
-        let descpt = descriptions.children[1]
-        descpt.innerHTML = '';
-        makeDescriptionOutline(eleColor)
-        startTypeWriter(descpt);
-        
+        setTimeout(()=>{
+            currentEl = element;
+            descriptions.style.display = "block";
+            descriptions.style.borderLeftColor = eleColor;
+            let descpts = descriptions.querySelectorAll(".typeWrite");
+            descpts.forEach((descpt) => {
+                descpt.innerHTML = '';
+            })
+            makeDescriptionOutline(eleColor, 100);
+            makeTypeWriters(descpts);
 
-        
-
+        },timeout)
     });
     i++;
 })
 
+function makeTypeWriters(x) {
+    x.forEach((y)=>{
+        listOfTypeWriters.push(startTypeWriter(y))
+    })
+}
 
-function makeDescriptionOutline(color) {
+function interupt() {
+    listOfTypeWriters.forEach((x)=> {
+        x.exit = true;
+    })
+    listOfTypeWriters = [];
+}
+
+function makeDescriptionOutline(color, size) {
     let lines = descriptions.querySelectorAll(".descLine");
     lines.forEach((line) => {
         line.style.backgroundColor = color
         setTimeout(()=>{
-            line.style.width = "100%"
+            line.style.width = size + "%";
             descriptions.style.borderRightColor = color;
         }, 100)
 

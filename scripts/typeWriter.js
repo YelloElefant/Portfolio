@@ -7,12 +7,15 @@ let TxtType = function (el, toRotate, period, shouldRemove) {
    this.shouldRemove = shouldRemove;
    this.tick();
    this.isDeleting = false;
+   this.exit = false;
+   this.isDone = false; 
 };
 
 TxtType.prototype.tick = function () {
+   if(this.exit) {return}
    let i = this.loopNum % this.toRotate.length;
    let fullTxt = this.toRotate[i];
-
+   //console.log(this)
    
    if (this.isDeleting && this.shouldRemove) {
       this.txt = fullTxt.substring(0, this.txt.length - 1);
@@ -40,7 +43,10 @@ TxtType.prototype.tick = function () {
 
    
    
-   if (this.txt == fullTxt && this.shouldRemove == false) {return;}
+   if (this.txt == fullTxt && this.shouldRemove == false) {
+      this.isDone = true;
+      return;
+   }
 
    setTimeout(function () {
       that.tick();
@@ -65,12 +71,15 @@ function startTypeWriter(x) {
    let toRotate = x.getAttribute('data-type');
    let period = x.getAttribute('data-period');
    let shouldRemove = toRotate.length == 1;
+   let txtType;
    if (toRotate) {
-      new TxtType(x, JSON.parse(toRotate), period, shouldRemove);
+      txtType = new TxtType(x, JSON.parse(toRotate), period, shouldRemove);
    }
    // INJECT CSS
    let css = document.createElement("style");
    css.type = "text/css";
    css.innerHTML = ".typewrite > .wrap { border-right: 2px solid var(--secondary-font-color); }";
    document.body.appendChild(css);
+   return txtType
 }
+
