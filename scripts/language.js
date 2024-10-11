@@ -26,7 +26,7 @@ languages.forEach(element => {
     let topLine = element.children[0]
     let bottomLine = element.children[2]
 
-    if(inner.className == "html") {
+    if (inner.className == "html") {
         console.log(inner)
         inner.children[0].style.color = eleColor;
         i++;
@@ -40,38 +40,37 @@ languages.forEach(element => {
 
 
 
-    
+    descriptions.querySelectorAll(".descContent").forEach((content) => {
+        content.style.display = "none";
+    })
 
-    element.addEventListener("click", async ()=>{
+
+    element.addEventListener("click", async () => {
         let index = Array.prototype.indexOf.call(languages, element);
         let descContent = descriptions.querySelectorAll(".descContent")[index]
         let descpts = descContent.querySelectorAll(".typeWrite");
         descpts.forEach((thing) => { thing.innerHTML = ''; })
-        descriptions.querySelectorAll(".descContent").forEach((content)=> {
-            if (content == descContent) {
-                content.style.display = "flex";
-                return;
-            }
-            content.style.display = "none";
-        })
+
+
         console.log(index)
         try {
             previouseLines.top.style.width = "";
             previouseLines.bottom.style.width = "";
-        }catch{}
+        } catch { }
 
         if (element.getAttribute('data-clicked')) {
             element.removeAttribute('data-clicked')
             interupt();
-            undoCoolThing("transperant", 0)
             resetDescriptions(descpts)
+            undoCoolThing("transperant", 0)
 
             return
-        } 
+        }
         bottomLine.style.width = "100%"
         topLine.style.width = "100%"
 
-        languages.forEach(e => {e.removeAttribute('data-clicked')})
+
+        languages.forEach(e => { e.removeAttribute('data-clicked') })
         element.setAttribute('data-clicked', "true")
         let typeWriterPromise;
         let timeout = 0
@@ -87,12 +86,21 @@ languages.forEach(element => {
             bottom: bottomLine
         }
 
-        setTimeout(async ()=>{
+        setTimeout(async () => {
             await doCoolThing(eleColor, 100);
             if (inner.className == "html") { makeDescriptionOutline(colors[1], 100); }
             resetDescriptions(descpts)
             typeWriterPromise = makeTypeWriters(descpts);
-        },timeout)
+            descriptions.querySelectorAll(".descContent").forEach((content) => {
+                if (content == descContent) {
+                    content.style.display = "flex";
+                    return;
+                }
+                content.style.display = "none";
+            })
+        }, timeout)
+
+
     });
     i++;
 })
@@ -118,13 +126,13 @@ async function undoCoolThing(color, size) {
     await new Promise(r => setTimeout(r, 100));
     descriptions.style.opacity = 1;
     descriptions.style.display = "none";
-            
+
 }
 
 
 
 async function makeTypeWriters(x) {
-    return new Promise(async (resolve) =>{
+    return new Promise(async (resolve) => {
         for (let i = 0; i < x.length; i++) {
             const y = x[i];
             let written = await new Promise((resolve) => {
@@ -132,7 +140,7 @@ async function makeTypeWriters(x) {
                     resolve("done")
                 })
                 listOfTypeWriters.push(current)
-            }   
+            }
             )
             await new Promise(r => setTimeout(r, 100));
         }
@@ -140,7 +148,7 @@ async function makeTypeWriters(x) {
 }
 
 function interupt() {
-    listOfTypeWriters.forEach((x)=> {
+    listOfTypeWriters.forEach((x) => {
         x.exit = true;
     })
     listOfTypeWriters = [];
@@ -150,7 +158,7 @@ function makeDescriptionOutline(color, size) {
     let lines = descriptions.querySelectorAll(".descLine");
     lines.forEach((line) => {
         line.style.backgroundColor = color
-        setTimeout(()=>{
+        setTimeout(() => {
             line.style.width = size + "%";
             descriptions.style.borderRightColor = color;
         }, 100)
