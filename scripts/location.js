@@ -20,6 +20,7 @@ async function getLocation() {
 
 
 
+
     long.innerHTML = clientLocation.lon;
     lat.innerHTML = clientLocation.lat;
 }
