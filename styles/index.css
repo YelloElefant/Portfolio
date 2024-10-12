@@ -194,7 +194,7 @@ hr {
 #ageWrapper {
    opacity: 0;
    transition: 1s ease;
-   padding: 10px;
+   padding: 20px;
    /* margin-bottom: 20px; */
    /* position: relative; */
    /*    
@@ -214,17 +214,11 @@ hr {
    transition: 1s ease;
    flex: 1;
    text-align: right;
+   font-weight: bold;
 }
 
 
 
-#navigation {
-   display: inline-flex;
-   justify-content: left;
-   align-items: center;
-   width: 100%;
-   margin-left: 20px;
-}
 
 
 
