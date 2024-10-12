@@ -1,6 +1,7 @@
 let titleEle = document.getElementById("title");
 let main = document.getElementById("main");
 let titleNav = document.getElementById("titleNavWrapper")
+let nav = document.getElementById("ageWrapper")
 
 main.style.opacity = 0;
 
